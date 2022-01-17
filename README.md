@@ -1,1 +1,3 @@
-# unity-metaverse
+# METAVERSE CHALLENGE CAMP
+---
++ 1주차
