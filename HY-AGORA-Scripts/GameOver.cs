@@ -42,9 +42,6 @@ public class GameStart : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             triggered = false;
-            /*startbutton.SetActive(triggered);
-            scoreboard.SetActive(triggered);
-            timer.SetActive(triggered);*/
 
         }
     }
