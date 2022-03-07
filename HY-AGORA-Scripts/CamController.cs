@@ -22,15 +22,44 @@ public class CamController : MonoBehaviour
 
     private int toggleView = 3; // 1=1인칭, 3=3인칭
 
+
+    void Start()
+    {
+        if (CharacterAppear.isMale == true)
+        {
+            player = GameObject.Find("Player_Boy");
+            GameObject.Find("player_girl").SetActive(false);
+        }
+        else
+        {
+            player = GameObject.Find("player_girl");
+            GameObject.Find("Player_Boy").SetActive(false);
+        }
+    }
+
+
     void Update()
     {
         xmove += Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime; // 마우스의 좌우 이동량을 xmove에 누적
         ymove -= Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime; // 마우스의 상하 이동량을 ymove에 누적
+        /*xmove += Input.GetAxis("Mouse X"); // 마우스의 좌우 이동량을 xmove에 누적
+        ymove -= Input.GetAxis("Mouse Y"); // 마우스의 상하 이동량을 ymove에 누적*/
 
         ymove = Mathf.Clamp(ymove, -90f, 90f); //(대상, 최소, 최대)
         transform.rotation = Quaternion.Euler(ymove, xmove, 0); // 이동량에 따라 카메라의 바라보는 방향을 조정합니다.
+
+        // 회전 값 변수에 마우스 입력 값 누적
+        //mx += xmove * rotSpeed * Time.deltaTime;
+        //my += ymove * rotSpeed * Time.deltaTime;
+
+        // 마우스 상하 이동 회전 변수 값을 제한
+        //my = Mathf.Clamp(my, -90f, 90f);
+
+        //transform.RotateAround(player.transform.position, Vector3.up, 10f); // 이동량에 따라 카메라의 바라보는 방향을 조정
+
+        // transform.eulerAngles = new Vector3(-my,mx, 0);
         
-        // 책상 오브젝트 클릭 시 토글뷰를 1로 변환
+        // 의자 오브젝트 클릭 시 토글뷰를 1로 변환
         if(Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

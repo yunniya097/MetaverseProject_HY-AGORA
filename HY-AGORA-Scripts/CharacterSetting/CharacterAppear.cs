@@ -9,7 +9,7 @@ public class CharacterAppear : MonoBehaviour
     public GameObject Female;
 
     [SerializeField]
-    public bool isMale = true;
+    public static bool isMale = true;
 
     public void MaleAppear()
     {
@@ -28,6 +28,7 @@ public class CharacterAppear : MonoBehaviour
     public void FemaleAppear()
     {
         isMale = false;
+        Debug.Log("is female");
         /*여 캐릭터 활성화*/
         Female.SetActive(true);
 
